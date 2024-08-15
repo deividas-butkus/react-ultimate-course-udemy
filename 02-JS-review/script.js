@@ -145,6 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
+/*
 const book = getBook(3);
 
 // const title = book.title
@@ -254,3 +255,29 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+
+*/
+
+const books = getBooks();
+console.log(books);
+
+console.log([1, 2, 3, 4, 5, 6].map((el) => el * 2));
+
+const titles = books.map((book) => book.title);
+console.log(titles);
+
+const essentials = books.map((book) => `${book.title} by ${book.author}`);
+console.log(essentials);
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const essentialsObj = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  totalReviewsCount: getTotalReviewCount(book),
+}));
+console.log(essentialsObj);
