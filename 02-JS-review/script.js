@@ -162,6 +162,18 @@ hasMovieAdaptation;
 // const primaryGenre = genres[0]
 // const secondaryGenre = genres[1]
 
-const [primaryGenre, secondaryGenre] = book.genres;
-primaryGenre;
-secondaryGenre;
+const [primaryGenre, secondaryGenre, ...otherGenres] = book.genres;
+console.log(primaryGenre);
+console.log(secondaryGenre);
+console.log(otherGenres);
+
+const newGenre = "horror";
+
+const supplementedArrau = [...book.genres, newGenre];
+console.log(supplementedArrau);
+
+const updatedBook = { ...book, moviePublicationDate: "2025-11-12" };
+console.log(updatedBook);
+
+const updatedPagesBook = { ...updatedBook, pages: 1000 };
+console.log(updatedPagesBook);
