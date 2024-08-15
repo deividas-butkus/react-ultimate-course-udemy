@@ -320,3 +320,24 @@ console.log(sortedByPagesAsc);
 
 const sortedByPagesDes = books.slice().sort((a, b) => b.pages - a.pages);
 console.log(sortedByPagesDes);
+
+// 1. Add book object to array
+const newBook = {
+  id: 6,
+  title: "Pasakos",
+  publicationDate: "2024-01-01",
+  author: "Lietuvių liaudis",
+};
+
+const arrAfterAdd = [...books, newBook];
+arrAfterAdd;
+
+// 2. Deletye a book
+const arrAfterDel = arrAfterAdd.filter((book) => book.id !== 4);
+arrAfterDel;
+
+// 3. Update book object in the array
+const booksAfterUpdate = arrAfterDel.map((book) =>
+  book.id === 6 ? { ...book, title: "Nebe pasakos" } : book
+);
+booksAfterUpdate;
