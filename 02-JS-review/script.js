@@ -261,6 +261,8 @@ console.log(getTotalReviewCount(book));
 const books = getBooks();
 console.log(books);
 
+// Array map
+
 console.log([1, 2, 3, 4, 5, 6].map((el) => el * 2));
 
 const titles = books.map((book) => book.title);
@@ -281,3 +283,15 @@ const essentialsObj = books.map((book) => ({
   totalReviewsCount: getTotalReviewCount(book),
 }));
 console.log(essentialsObj);
+
+// Array filter
+
+const longBooksMovieAdapted = books
+  .filter((book) => book.pages >= 500)
+  .filter((book) => book.hasMovieAdaptation);
+console.log(longBooksMovieAdapted);
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => `${book.title} has adventure genre`);
+console.log(adventureBooks);
