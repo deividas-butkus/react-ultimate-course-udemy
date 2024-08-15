@@ -218,3 +218,29 @@ data.forEach((book) => {
 function getYear(date) {
   return date.split("-")[0];
 }
+
+// Short-Circuiting
+
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// falsy: 0, "", null, undefined
+console.log(1 && "some");
+console.log(0 && "some");
+console.log(0 && null);
+
+console.log(1 || "some");
+console.log(0 || "some");
+console.log(0 || null);
+
+console.log(
+  book.translations.spanish || "The book has no Spanish translations"
+);
+
+console.log(book.reviews.librarything.reviewsCount);
+
+console.log(book.reviews.librarything.reviewsCount || "The book has no data");
+// Wrong result as actually zero is also data. Therefore Nullish Coa
+
+console.log(book.reviews.librarything.reviewsCount ?? "The book has no data");
