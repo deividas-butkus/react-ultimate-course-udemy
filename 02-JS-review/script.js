@@ -181,12 +181,13 @@ console.log(updatedPagesBook);
 // Template literals
 
 const printSummary = (book) => {
-  const [primaryGenre, secondaryGenre, ...otherGenres] = book.genres;
+  const [primaryGenre, secondaryGenre, ...otherGenres] = book.genres || [];
   console.log(
     `${book.title}, a ${book.pages}-page long book, was wrtitten by ${
       book.author
     } and published in ${
-      book.publicationDate
+      // book.publicationDate.split("-")[0]
+      getYear(book.publicationDate)
     }. Its main genres are ${primaryGenre} and ${secondaryGenre}, however there are some aspects of ${otherGenres.join(
       ", "
     )} present in it. The book has ${
@@ -206,6 +207,14 @@ const { pages: pagesU } = updatedPagesBook;
 console.log(pagesU);
 console.log(`The book has ${pagesRange} pages`);
 
+// Arrow functions
+
+// const getYear = (date) => date.split("-")[0];
+
 data.forEach((book) => {
-  console.log(printSummary(getBook(book.id)));
+  console.log(printSummary(book));
 });
+
+function getYear(date) {
+  return date.split("-")[0];
+}
