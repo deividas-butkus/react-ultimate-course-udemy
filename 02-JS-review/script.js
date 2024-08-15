@@ -175,12 +175,37 @@ console.log(supplementedArrau);
 const updatedBook = { ...book, moviePublicationDate: "2025-11-12" };
 console.log(updatedBook);
 
-const updatedPagesBook = { ...updatedBook, pages: 1000 };
+const updatedPagesBook = { ...updatedBook, pages: 1001 };
 console.log(updatedPagesBook);
 
 // Template literals
 
-const summary = `${title}, a ${pages}-page long book, was wrtitten by ${author} and published in ${publicationDate}. It is mainly ${primaryGenre} and ${secondaryGenre}, however there are some aspects of ${otherGenres.join(
-  ", "
-)} present in it`;
-console.log(summary);
+const printSummary = (book) => {
+  const [primaryGenre, secondaryGenre, ...otherGenres] = book.genres;
+  console.log(
+    `${book.title}, a ${book.pages}-page long book, was wrtitten by ${
+      book.author
+    } and published in ${
+      book.publicationDate
+    }. Its main genres are ${primaryGenre} and ${secondaryGenre}, however there are some aspects of ${otherGenres.join(
+      ", "
+    )} present in it. The book has ${
+      book.hasMovieAdaptation ? "been" : "not been"
+    } adapted as a movie`
+  );
+};
+
+// Ternary operators
+
+const pagesRange =
+  updatedPagesBook.pages > 1000 ? "over a thousand" : "up to 1000";
+console.log(pages);
+console.log(pagesRange);
+
+const { pages: pagesU } = updatedPagesBook;
+console.log(pagesU);
+console.log(`The book has ${pagesRange} pages`);
+
+data.forEach((book) => {
+  console.log(printSummary(getBook(book.id)));
+});
