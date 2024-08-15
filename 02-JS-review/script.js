@@ -299,3 +299,24 @@ console.log(adventureBooks);
 
 const totalPages = books.reduce((sum, book) => sum + book.pages, 0);
 totalPages;
+
+// Array sort methiod
+
+const x = [2.4, 45, 100, 1, 2];
+
+const xSortedAsc = x.sort((a, b) => a - b);
+xSortedAsc;
+
+const xSortedDes = x.sort((a, b) => b - a);
+xSortedDes;
+x;
+
+const xSortedAscChained = x.slice().sort((a, b) => a - b);
+xSortedAscChained;
+x;
+
+const sortedByPagesAsc = books.slice().sort((a, b) => a.pages - b.pages);
+console.log(sortedByPagesAsc);
+
+const sortedByPagesDes = books.slice().sort((a, b) => b.pages - a.pages);
+console.log(sortedByPagesDes);
