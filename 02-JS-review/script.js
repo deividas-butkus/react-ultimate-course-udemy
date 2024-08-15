@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(2);
+const book = getBook(3);
 
 // const title = book.title
 // const author = book.author
@@ -238,9 +238,19 @@ console.log(
   book.translations.spanish || "The book has no Spanish translations"
 );
 
-console.log(book.reviews.librarything.reviewsCount);
+// console.log(book.reviews.librarything.reviewsCount);
 
-console.log(book.reviews.librarything.reviewsCount || "The book has no data");
+// console.log(book.reviews.librarything.reviewsCount || "The book has no data");
 // Wrong result as actually zero is also data. Therefore Nullish Coa
 
-console.log(book.reviews.librarything.reviewsCount ?? "The book has no data");
+// console.log(book.reviews.librarything.reviewsCount ?? "The book has no data");
+
+// Optional chaining
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
