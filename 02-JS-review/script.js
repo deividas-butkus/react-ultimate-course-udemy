@@ -177,3 +177,10 @@ console.log(updatedBook);
 
 const updatedPagesBook = { ...updatedBook, pages: 1000 };
 console.log(updatedPagesBook);
+
+// Template literals
+
+const summary = `${title}, a ${pages}-page long book, was wrtitten by ${author} and published in ${publicationDate}. It is mainly ${primaryGenre} and ${secondaryGenre}, however there are some aspects of ${otherGenres.join(
+  ", "
+)} present in it`;
+console.log(summary);
