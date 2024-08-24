@@ -1,5 +1,10 @@
-const Bill = ({ bill, setBill }) => {
-  const handleChange = (e) => {
+type PropsType = {
+  bill: number;
+  setBill: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const Bill = ({ bill, setBill }: PropsType) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBill(Number(e.target.value));
   };
 

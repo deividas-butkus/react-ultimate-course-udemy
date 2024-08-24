@@ -8,21 +8,24 @@ const App = () => {
   const [tipsFriends, setTipsFriends] = useState(0);
 
   const tips = (bill * (tipsYours / 100 + tipsFriends / 100)) / 2;
-  console.log(tips);
   const pay = bill + tips;
 
   const handleReset = () => {
     setBill(0);
     setTipsYours(0);
-    setTipsFriends("");
+    setTipsFriends(0);
   };
 
   return (
     <>
       <h1>Tip calculator</h1>
       <Bill bill={bill} setBill={setBill} />
-      <Tips tips={tipsYours} setTips={setTipsYours} />
-      <Tips tips={tipsFriends} setTips={setTipsFriends} />
+      <Tips tips={tipsYours} setTips={setTipsYours}>
+        How did ypu like the service
+      </Tips>
+      <Tips tips={tipsFriends} setTips={setTipsFriends}>
+        How did your friend like the service
+      </Tips>
       {bill !== 0 ? (
         <>
           <h1>
