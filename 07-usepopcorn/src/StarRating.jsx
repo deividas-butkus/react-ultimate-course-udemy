@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const containerStyle = {
   display: "flex",
@@ -10,17 +11,31 @@ const starContainerStyle = {
   display: "flex",
 };
 
-const textStyle = {
-  lineHeight: "1",
-  margin: "0",
+StarRating.propTypes = {
+  maxRating: PropTypes.number,
+  color: PropTypes.string,
+  size: PropTypes.number,
+  className: PropTypes.string,
+  messages: PropTypes.array,
+  defaultRating: PropTypes.number,
+  onSetRating: PropTypes.func,
 };
 
-export default function StarRating({ maxRating = 3 }) {
-  const [rating, setRating] = useState(0);
+export default function StarRating({
+  maxRating = 3,
+  color = "#fcc419",
+  size = 48,
+  className = "",
+  messages = [],
+  defaultRating = 0,
+  onSetRating = () => {},
+}) {
+  const [rating, setRating] = useState(defaultRating);
   const [hoverRating, setHoverRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
+    onSetRating(messages.length === maxRating ? messages[rating - 1] : rating);
   }
 
   function handleHoverRating(direction, rating) {
@@ -28,8 +43,15 @@ export default function StarRating({ maxRating = 3 }) {
     direction === "out" && setHoverRating(0);
   }
 
+  const textStyle = {
+    lineHeight: "1",
+    margin: "0",
+    color,
+    fontSize: `${size}px`,
+  };
+
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
       <div style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
@@ -39,22 +61,34 @@ export default function StarRating({ maxRating = 3 }) {
             // onHoverIn={() => setHoverRating(i + 1)}
             // onHoverOut={() => setHoverRating(0)}
             onHoverRate={(direction) => handleHoverRating(direction, i + 1)}
+            color={color}
+            size={size}
           />
         ))}
       </div>
-      <p style={textStyle}>{hoverRating || rating || ""}</p>
+      <p style={textStyle}>
+        {messages.length === maxRating
+          ? messages[hoverRating ? hoverRating - 1 : rating - 1]
+          : hoverRating || rating || ""}
+      </p>
     </div>
   );
 }
 
-const starStyle = {
-  height: "48px",
-  width: "48px",
-  display: "block",
-  cursor: "pointer",
-};
+function Star({
+  isFilled,
+  onRate,
+  /* onHoverIn, onHoverOut */ onHoverRate,
+  color,
+  size,
+}) {
+  const starStyle = {
+    height: `${size}px`,
+    width: `${size}px`,
+    display: "block",
+    cursor: "pointer",
+  };
 
-function Star({ isFilled, onRate, /* onHoverIn, onHoverOut */ onHoverRate }) {
   return (
     <span
       style={starStyle}
@@ -66,9 +100,10 @@ function Star({ isFilled, onRate, /* onHoverIn, onHoverOut */ onHoverRate }) {
       {isFilled ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          //   viewBox="0 0 20 20"
           viewBox="0 0 20 20"
-          fill="#000000"
-          stroke="#000000"
+          fill={color}
+          stroke={color}
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
@@ -77,7 +112,7 @@ function Star({ isFilled, onRate, /* onHoverIn, onHoverOut */ onHoverRate }) {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke="#000"
+          stroke={color}
         >
           <path
             strokeLinecap="round"
@@ -88,5 +123,39 @@ function Star({ isFilled, onRate, /* onHoverIn, onHoverOut */ onHoverRate }) {
         </svg>
       )}
     </span>
+  );
+}
+
+export function Test() {
+  const [movieRating1, setMovieRatinfg1] = useState("ok");
+  const [movieRating2, setMovieRatinfg2] = useState("ok");
+
+  return (
+    <>
+      <div>
+        <StarRating
+          maxRating={5}
+          color="orangered"
+          defaultRating={3}
+          messages={["terrible", "bad", "ok", "good", "amazing"]}
+          onSetRating={setMovieRatinfg1}
+        />
+        <p>
+          The first film was <strong>{movieRating1}</strong>
+        </p>
+      </div>
+      <div>
+        <StarRating
+          maxRating={5}
+          color="orangered"
+          defaultRating={3}
+          messages={["terrible", "bad", "ok", "good", "amazing"]}
+          onSetRating={setMovieRatinfg2}
+        />
+        <p>
+          The second film was <strong>{movieRating2}</strong>
+        </p>
+      </div>
+    </>
   );
 }
