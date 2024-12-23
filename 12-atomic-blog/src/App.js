@@ -1,13 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { faker } from "@faker-js/faker";
 import { PostProvider, PostContext } from "./PostContext";
-
-function createRandomPost() {
-  return {
-    title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
-    body: faker.hacker.phrase(),
-  };
-}
+import createRandomPost from "./utils/createRandomPost";
 
 function App() {
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
