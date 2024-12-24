@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useCities from "../contexts/useCities";
 import styles from "./City.module.css";
 import Spinner from "./Spinner";
+import BackButton from "./BackButton";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -25,9 +26,9 @@ function City() {
 
   if (isLoading) return <Spinner />;
 
-  if (!currentCity || !currentCity.cityName) return <div>City not found</div>;
-
   const { cityName, emoji, date, notes } = currentCity;
+
+  if (!currentCity || !currentCity.cityName) return <div>City not found</div>;
 
   return (
     <div className={styles.city}>
@@ -61,7 +62,9 @@ function City() {
         </a>
       </div>
 
-      <div></div>
+      <div>
+        <BackButton />
+      </div>
     </div>
   );
 }
