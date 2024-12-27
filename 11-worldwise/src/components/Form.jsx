@@ -12,6 +12,7 @@ import { useUrlPosition } from "../hooks/useUrlPosition";
 import { convertToEmoji } from "../utils/emojiUtils";
 import Message from "../components/Message";
 import Spinner from "../components/Spinner";
+import useCities from "../contexts/useCities";
 
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
