@@ -17,10 +17,13 @@ import useCities from "../contexts/useCities";
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Form() {
+  const navigate = useNavigate();
   const [lat, lng] = useUrlPosition();
+  const { createCity, isLoading } = useCities();
+
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState("");
-  const [, setCountry] = useState("");
+  const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
@@ -58,6 +61,24 @@ function Form() {
     [lat, lng]
   );
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!cityName || !date) return;
+
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: { lat, lng },
+    };
+
+    await createCity(newCity);
+    navigate("/app");
+  }
+
   if (isLoadingGeocoding) return <Spinner />;
 
   if (!lat && !lng)
@@ -66,7 +87,10 @@ function Form() {
   if (geocodingError) return <Message message={geocodingError} />;
 
   return (
-    <form className={styles.form}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
