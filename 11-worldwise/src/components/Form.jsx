@@ -40,7 +40,6 @@ function Form() {
             `${BASE_URL}?latitude=${lat}&longitude=${lng}`
           );
           const data = await response.json();
-          console.log(data);
 
           if (!data.countryCode)
             throw new Error(
