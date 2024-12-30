@@ -48,7 +48,7 @@ export default function Login() {
         </div>
 
         <div>
-          <Button type={"primary"}>Login</Button>
+          <Button type="primary">Login</Button>
         </div>
       </form>
     </main>
