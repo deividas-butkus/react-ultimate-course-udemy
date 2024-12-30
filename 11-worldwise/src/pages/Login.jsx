@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
+import useAuth from "../contexts/useAuth";
 
 export default function Login() {
+  const { login } = useAuth();
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
@@ -32,7 +34,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <button onClick={login}>Login</button>
         </div>
       </form>
     </main>
