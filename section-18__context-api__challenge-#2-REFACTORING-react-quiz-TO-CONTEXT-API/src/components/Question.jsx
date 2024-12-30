@@ -1,7 +1,17 @@
+import useQuiz from "../contexts/useQuiz";
 import Options from "./Options";
 
-const Question = ({ question, dispatch, answer }) => {
-  return <Options question={question} dispatch={dispatch} answer={answer} />;
+const Question = () => {
+  const { questions, index } = useQuiz();
+
+  const question = questions.at(index);
+
+  return (
+    <div>
+      <h4>{question.question}</h4>
+      <Options question={question} />
+    </div>
+  );
 };
 
 export default Question;
