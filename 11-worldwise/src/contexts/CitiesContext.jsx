@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 
 const BASE_URL = "http://localhost:9000";
 
-export const CitiesContext = createContext();
+const CitiesContext = createContext();
 
 const initialState = {
   cities: [],
@@ -55,7 +55,7 @@ function reducer(state, action) {
   }
 }
 
-export function CitiesProvider({ children }) {
+function CitiesProvider({ children }) {
   const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     reducer,
     initialState
@@ -144,3 +144,5 @@ export function CitiesProvider({ children }) {
     </CitiesContext.Provider>
   );
 }
+
+export { CitiesProvider, CitiesContext };
