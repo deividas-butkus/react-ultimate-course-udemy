@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { PostProvider } from "./PostContext";
 import createRandomPost from "./utils/createRandomPost";
 import usePosts from "./PostContext";
@@ -33,7 +33,7 @@ function App() {
   );
 }
 
-function Header() {
+const Header = memo(function Header() {
   // 3) Consuming Context value
   const { onClearPosts } = usePosts();
   return (
@@ -48,7 +48,7 @@ function Header() {
       </div>
     </header>
   );
-}
+});
 
 function SearchPosts() {
   const { searchQuery, setSearchQuery } = usePosts();
