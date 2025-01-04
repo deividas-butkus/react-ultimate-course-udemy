@@ -35,9 +35,12 @@ function Calculator({ workouts, allowSound }) {
     [duration, allowSound]
   );
 
-  useEffect(function () {
-    document.title = `Your ${number}-excercize workout`;
-  }, []);
+  useEffect(
+    function () {
+      document.title = `Your ${number}-excercize workout`;
+    },
+    [number]
+  );
 
   // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
