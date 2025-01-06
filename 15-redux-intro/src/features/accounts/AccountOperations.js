@@ -98,7 +98,9 @@ function AccountOperations() {
         </div>
 
         <div>
-          <span>Pay back $X</span>
+            <span>
+              Pay back {currentLoan} ({currentLoanPurpose})
+            </span>
           <button onClick={handlePayLoan}>Pay loan</button>
         </div>
       </div>
