@@ -42,7 +42,9 @@ function AccountOperations() {
     setLoanPurpose("");
   }
 
-  function handlePayLoan() {}
+  function handlePayLoan() {
+    dispatch(payLoan());
+  }
 
   return (
     <div>
