@@ -30,7 +30,7 @@ const reducer = (state, action) => {
     case "openAccount":
       return { ...App, balance: 500, isActive: true };
     case "deposit":
-      return "";
+      return { ...state, balance: state.balance + action.payload };
     case "withdraw":
       return "";
     case "requestLoan":
