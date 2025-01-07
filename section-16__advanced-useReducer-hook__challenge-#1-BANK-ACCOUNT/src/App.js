@@ -56,7 +56,10 @@ export default function App() {
       <p>Loan: {loan}</p>
 
       <p>
-        <button onClick={() => {}} disabled={false}>
+        <button
+          onClick={() => dispatch({ type: "openAccount" })}
+          disabled={isActive}
+        >
           Open account
         </button>
       </p>
