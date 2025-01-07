@@ -31,7 +31,7 @@ const accountSlice = createSlice({
         state.balance = state.balance + action.payload.amount;
       },
     },
-    payLoan(state, action) {
+    payLoan(state) {
       state.loanPurpose = "";
       state.balance -= state.loan;
       state.loan = 0;
