@@ -43,7 +43,8 @@ const reducer = (state, action) => {
         loan: action.payload,
       };
     case "payLoan":
-      return "";
+      if (!state.loan) return state;
+      return { ...state, balance: state.balance - state.loan, loan: 0 };
     case "closeAccount":
       return "";
     default:
