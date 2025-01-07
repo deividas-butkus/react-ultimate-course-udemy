@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import accountReducer from "./features/accounts/accountSlice";
 import customerReducer from "./features/customers/customerSlice";
-import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
   account: accountReducer,
