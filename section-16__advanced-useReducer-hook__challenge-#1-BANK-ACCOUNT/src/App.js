@@ -64,7 +64,10 @@ export default function App() {
         </button>
       </p>
       <p>
-        <button onClick={() => {}} disabled={!isActive}>
+        <button
+          onClick={() => dispatch({ type: "deposit", payload: 150 })}
+          disabled={!isActive}
+        >
           Deposit 150
         </button>
       </p>
