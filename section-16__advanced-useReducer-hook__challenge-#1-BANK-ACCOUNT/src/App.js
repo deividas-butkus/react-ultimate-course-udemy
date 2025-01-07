@@ -26,6 +26,8 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
+  if (!state.isActive && action.type !== "openAccount") return state;
+
   switch (action.type) {
     case "openAccount":
       return { ...App, balance: 500, isActive: true };
