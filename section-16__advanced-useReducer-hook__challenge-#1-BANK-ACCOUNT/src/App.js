@@ -30,7 +30,7 @@ const reducer = (state, action) => {
 
   switch (action.type) {
     case "openAccount":
-      return { ...App, balance: 500, isActive: true };
+      return { ...state, balance: 500, isActive: true };
     case "deposit":
       return { ...state, balance: state.balance + action.payload };
     case "withdraw":
