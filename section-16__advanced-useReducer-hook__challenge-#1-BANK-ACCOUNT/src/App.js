@@ -36,6 +36,12 @@ const reducer = (state, action) => {
     case "withdraw":
       return { ...state, balance: state.balance - action.payload };
     case "requestLoan":
+      if (state.loan) return state;
+      return {
+        ...state,
+        balance: state.balance + action.payload,
+        loan: action.payload,
+      };
     case "payLoan":
       return "";
     case "closeAccount":
