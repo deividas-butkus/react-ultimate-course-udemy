@@ -36,6 +36,9 @@ const accountSlice = createSlice({
       state.balance -= state.loan;
       state.loan = 0;
     },
+    convertingCurrency(state) {
+      state.isLoading = true;
+    },
   },
 });
 
