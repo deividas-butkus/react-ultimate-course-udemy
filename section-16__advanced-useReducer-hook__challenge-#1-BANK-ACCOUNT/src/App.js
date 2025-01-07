@@ -22,7 +22,25 @@ INSTRUCTIONS / CONSIDERATIONS:
 const initialState = {
   balance: 0,
   loan: 0,
-  isActive: false
+  isActive: false,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "openAccount":
+      return { ...App, balance: 500, isActive: true };
+    case "deposit":
+      return "";
+    case "withdraw":
+      return "";
+    case "requestLoan":
+    case "payLoan":
+      return "";
+    case "closeAccount":
+      return "";
+    default:
+      throw new Error("Unknown action");
+  }
 };
 
 export default function App() {
