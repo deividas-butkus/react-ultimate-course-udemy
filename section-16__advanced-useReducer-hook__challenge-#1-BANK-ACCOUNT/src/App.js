@@ -32,7 +32,7 @@ const reducer = (state, action) => {
     case "deposit":
       return { ...state, balance: state.balance + action.payload };
     case "withdraw":
-      return "";
+      return { ...state, balance: state.balance - action.payload };
     case "requestLoan":
     case "payLoan":
       return "";
