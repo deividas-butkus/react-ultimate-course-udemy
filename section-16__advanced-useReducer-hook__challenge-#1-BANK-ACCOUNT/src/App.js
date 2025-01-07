@@ -106,7 +106,10 @@ export default function App() {
         </button>
       </p>
       <p>
-        <button onClick={() => {}} disabled={!isActive}>
+        <button
+          onClick={() => dispatch({ type: "closeAccount" })}
+          disabled={!isActive}
+        >
           Close account
         </button>
       </p>
