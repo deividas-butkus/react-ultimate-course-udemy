@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <div>Hello Vite!</div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
