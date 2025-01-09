@@ -5,6 +5,9 @@ import CartOverview from "../features/cart/CartOverview";
 import Loader from "./Loader";
 
 function AppLayout() {
+  const navigation = useNavigation();
+  const isLoadng = navigation.state === "loading";
+
   return (
     <div>
       <Header />
