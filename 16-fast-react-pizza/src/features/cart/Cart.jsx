@@ -34,7 +34,11 @@ function Cart() {
       <Link to="/menu">&larr; Back to menu</Link>
 
       <h2>Your cart, %NAME%</h2>
-      <h3>{cart}</h3>
+      <ul>
+        {cart.map((item) => (
+          <CartItem key={item.pizzaId} item={item} />
+        ))}
+      </ul>
 
       <div>
         <Link to="/order/new">Order pizzas</Link>
