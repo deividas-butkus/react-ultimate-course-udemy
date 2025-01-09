@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import CartItem from "./CartItem";
+
 const fakeCart = [
   {
     pizzaId: 12,
