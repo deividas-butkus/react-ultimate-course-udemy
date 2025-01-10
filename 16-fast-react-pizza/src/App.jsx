@@ -5,6 +5,7 @@ import { loader as menuLoader } from "./features/menu/menuLoader";
 import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/order/CreateOrder";
 import Order from "./features/order/Order";
+import { loader as orderLoadar } from "./features/order/orderLoader";
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
 
@@ -34,15 +35,17 @@ const router = createBrowserRouter(
         },
         {
           path: "/order/:orderId",
+          loader: orderLoadar,
           element: <Order />,
+          errorElement: <Error />,
         },
       ],
     },
   ],
   {
     future: {
-      v7_startTransition: true, // Opt into startTransition behavior
-      v7_relativeSplatPath: true, // Opt into relative splat path behavior
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
     },
   }
 );
