@@ -1,3 +1,5 @@
+import CreateUser from "../features/user/CreateUser";
+
 function Home() {
   return (
     <div>
