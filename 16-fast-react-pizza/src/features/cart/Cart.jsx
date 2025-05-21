@@ -41,9 +41,7 @@ function Cart() {
       </ul>
 
       <div>
-        <Button onClick to="/order/new">
-          Order pizzas
-        </Button>
+        <Button to="/order/new">Order pizzas</Button>
         <Button>Clear cart</Button>
       </div>
     </div>
