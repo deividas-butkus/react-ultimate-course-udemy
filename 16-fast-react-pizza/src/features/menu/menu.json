@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita",
+    "ingredients": ["Tomato", "Mozzarella", "Basil"],
+    "unitPrice": 12,
+    "soldOut": false,
+    "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 2,
+    "name": "Pepperoni",
+    "ingredients": ["Tomato", "Mozzarella", "Pepperoni"],
+    "unitPrice": 14,
+    "soldOut": true,
+    "imageUrl": "https://images.unsplash.com/photo-1564128442383-9201fcc740eb?q=80&w=2131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 3,
+    "name": "Funghi",
+    "ingredients": ["Tomato", "Mozzarella", "Mushrooms"],
+    "unitPrice": 13,
+    "soldOut": false,
+    "imageUrl": "https://images.unsplash.com/photo-1717883235373-ef10b2a745a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 4,
+    "name": "Vegetale",
+    "ingredients": ["Tomato", "Mozzarella", "Zucchini", "Peppers"],
+    "unitPrice": 15,
+    "soldOut": false,
+    "imageUrl": "https://images.unsplash.com/photo-1585238342024-78d387f4a707?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 5,
+    "name": "Four Cheese",
+    "ingredients": ["Mozzarella", "Gorgonzola", "Parmesan", "Ricotta"],
+    "unitPrice": 16,
+    "soldOut": true,
+    "imageUrl": "https://media.istockphoto.com/id/2160847079/photo/traditional-italian-pizza-quattro-stagioni-with-four-types-of-toppings.jpg?s=1024x1024&w=is&k=20&c=TfDu3AxoeVZR-WCGNZ5k7yvZjltasCgj1heGMByYD1g="
+  }
+]
