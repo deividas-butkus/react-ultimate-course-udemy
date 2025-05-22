@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "name": "Four Cheese",
+    "name": "Quattro Stagioni",
     "ingredients": ["Mozzarella", "Gorgonzola", "Parmesan", "Ricotta"],
     "unitPrice": 16,
     "soldOut": true,
