@@ -7,15 +7,15 @@ const Friend = ({ friend }) => {
       <h3>{friend.name}</h3>
       {friend.balance < 0 && (
         <p className="red">
-          I owe ${Math.abs(friend.balance)} EUR to ${friend.name}
+          I owe ${Math.abs(friend.balance)} EUR to {friend.name}
         </p>
       )}
       {friend.balance > 0 && (
         <p className="green">
-          ${friend.name} owes me ${friend.balance} EUR
+          {friend.name} owes me {friend.balance} EUR
         </p>
       )}
-      {friend.balance === 0 && <p>We are even with ${friend.name}</p>}
+      {friend.balance === 0 && <p>We are even with {friend.name}</p>}
 
       <Button>Select</Button>
     </li>
