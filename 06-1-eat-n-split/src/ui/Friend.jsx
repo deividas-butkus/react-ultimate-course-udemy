@@ -1,9 +1,22 @@
+import Button from "./Button";
+
 const Friend = ({ friend }) => {
   return (
     <li>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
-      <p>{friend.balance}</p>
+      {friend.balance < 0 && (
+        <p className="red">
+          I owe ${Math.abs(friend.balance)} EUR to ${friend.name}
+        </p>
+      )}
+      {friend.balance > 0 && (
+        <p className="green">
+          ${friend.name} owes me ${friend.balance} EUR.
+        </p>
+      )}
+
+      <Button>Select</Button>
     </li>
   );
 };
