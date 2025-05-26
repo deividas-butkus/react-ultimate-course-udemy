@@ -12,9 +12,10 @@ const Friend = ({ friend }) => {
       )}
       {friend.balance > 0 && (
         <p className="green">
-          ${friend.name} owes me ${friend.balance} EUR.
+          ${friend.name} owes me ${friend.balance} EUR
         </p>
       )}
+      {friend.balance === 0 && <p>We are even with ${friend.name}</p>}
 
       <Button>Select</Button>
     </li>
