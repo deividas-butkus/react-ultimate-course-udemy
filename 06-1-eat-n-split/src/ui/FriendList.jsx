@@ -1,10 +1,6 @@
-import { useState } from "react";
-import initialFriends from "../data/data.json";
 import Friend from "../ui/Friend";
 
-const FriendList = () => {
-  const [friends, setFriends] = useState(initialFriends);
-
+const FriendList = ({ friends }) => {
   return (
     <div className="sidebar">
       <ul>
