@@ -9,7 +9,7 @@ const Friend = ({ friend, selectedFriend, onSelect }) => {
       <h3>{friend.name}</h3>
       {friend.balance < 0 && (
         <p className="red">
-          I owe ${Math.abs(friend.balance)} EUR to {friend.name}
+          I owe {Math.abs(friend.balance)} EUR to {friend.name}
         </p>
       )}
       {friend.balance > 0 && (
