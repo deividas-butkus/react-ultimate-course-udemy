@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 
 const FormAddFriend = ({ onAddFriend }) => {
-  const [newFriend, setNewFriend] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     image: "https://i.pravatar.cc/48",
   });
@@ -10,23 +10,26 @@ const FormAddFriend = ({ onAddFriend }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setNewFriend((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const friend = {
-      id: Date.now(),
-      name: newFriend.name,
-      image: newFriend.image,
+    if (!formData.name.trim() || !formData.image.trim()) return;
+
+    const id = crypto.randomUUID();
+
+    const newFriend = {
+      id,
+      name: formData.name,
+      image: `${formData.image}?=${id}`,
       balance: 0,
     };
 
-    console.log(friend);
-    onAddFriend?.(friend);
+    onAddFriend?.(newFriend);
 
-    setNewFriend({ name: "", image: "https://i.pravatar.cc/48" });
+    setFormData({ name: "", image: "https://i.pravatar.cc/48" });
   };
 
   return (
@@ -36,7 +39,7 @@ const FormAddFriend = ({ onAddFriend }) => {
         name="name"
         id="name"
         type="text"
-        value={newFriend.name}
+        value={formData.name}
         onChange={handleChange}
       />
 
@@ -45,7 +48,7 @@ const FormAddFriend = ({ onAddFriend }) => {
         name="image"
         id="image"
         type="text"
-        value={newFriend.image}
+        value={formData.image}
         onChange={handleChange}
       />
 
