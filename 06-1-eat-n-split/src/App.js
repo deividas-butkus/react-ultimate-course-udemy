@@ -28,6 +28,19 @@ const App = () => {
     setFormAddFriendVisible(false);
   };
 
+  const handleSplitBill = (value, id) => {
+    setFriends((friends) => {
+      const updated = friends.map((friend) =>
+        friend.id === id
+          ? { ...friend, balance: friend.balance + value }
+          : friend,
+      );
+      console.log(updated); // 🧪 see updated balances
+      return updated;
+    });
+    setSelectedFriend(null);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -44,7 +57,12 @@ const App = () => {
         </Button>
       </div>
 
-      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
+      {selectedFriend && (
+        <FormSplitBill
+          selectedFriend={selectedFriend}
+          onSplitBill={handleSplitBill}
+        />
+      )}
     </div>
   );
 };
