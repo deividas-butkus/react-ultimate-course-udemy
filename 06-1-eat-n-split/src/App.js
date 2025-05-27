@@ -9,9 +9,11 @@ import FormSplitBill from "./ui/FormSplitBill";
 const App = () => {
   const [friends, setFriends] = useState(initialFriends);
   const [formAddFriendVisible, setFormAddFriendVisible] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   const handleAddFriendClick = () => {
     setFormAddFriendVisible((visibility) => !visibility);
+    setSelectedFriend(null);
   };
 
   const handleAddFriend = (newFriend) => {
@@ -19,10 +21,21 @@ const App = () => {
     setFormAddFriendVisible(false);
   };
 
+  const handleSelectFriend = (id) => {
+    setSelectedFriend((cur) =>
+      cur?.id === id ? null : friends.find((f) => f.id === id),
+    );
+    setFormAddFriendVisible(false);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={friends} />
+        <FriendList
+          friends={friends}
+          onSelectFriend={handleSelectFriend}
+          selectedFriend={selectedFriend}
+        />
         {formAddFriendVisible && (
           <FormAddFriend onAddFriend={handleAddFriend} />
         )}
@@ -30,7 +43,8 @@ const App = () => {
           {formAddFriendVisible ? "Close" : "Add new friend"}
         </Button>
       </div>
-      <FormSplitBill />
+
+      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
     </div>
   );
 };
