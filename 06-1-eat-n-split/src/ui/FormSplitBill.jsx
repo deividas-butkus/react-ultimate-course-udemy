@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-const FormSplitBill = ({ selectedFriend }) => {
+const FormSplitBill = ({ selectedFriend, onSplitBill }) => {
   const [formData, setFormData] = useState({
     billValue: "",
     yourExpense: "",
@@ -13,14 +13,30 @@ const FormSplitBill = ({ selectedFriend }) => {
       ? Number(formData.billValue) - Number(formData.yourExpense)
       : "";
 
-  const handleDChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const bill = Number(formData.billValue);
+    const yourPart = Number(formData.yourExpense);
+
+    if (!bill || !yourPart || formData.whoIsPaying === "" || yourPart > bill)
+      return;
+
+    const paidByFriend = bill - yourPart;
+
+    const value = formData.whoIsPaying === "user" ? paidByFriend : -yourPart;
+
+    onSplitBill(value, selectedFriend.id);
+  };
+
   return (
-    <form className="form-split-bill">
+    <form className="form-split-bill" onSubmit={handleSubmit}>
       <h2>Split a bill with {selectedFriend.name}</h2>
 
       <label htmlFor="billValue">💰Bill value</label>
@@ -29,7 +45,7 @@ const FormSplitBill = ({ selectedFriend }) => {
         id="billValue"
         type="number"
         value={formData.billValue}
-        onChange={handleDChange}
+        onChange={handleChange}
       />
 
       <label htmlFor="yourExpense">🫵Your expense</label>
@@ -37,8 +53,9 @@ const FormSplitBill = ({ selectedFriend }) => {
         name="yourExpense"
         id="yourExpense"
         type="number"
-        value={formData.yourExppense}
-        onChange={handleDChange}
+        value={formData.yourExpense}
+        onChange={handleChange}
+        max={formData.billValue}
       />
 
       <label htmlFor="friendExpense">🤝{selectedFriend.name}'s expense</label>
@@ -55,7 +72,7 @@ const FormSplitBill = ({ selectedFriend }) => {
         name="whoIsPaying"
         id="whoIsPaying"
         value={formData.whoIsPaying}
-        onChange={handleDChange}
+        onChange={handleChange}
       >
         <option value="" disabled>
           Select
