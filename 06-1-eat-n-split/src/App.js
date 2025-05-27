@@ -11,7 +11,7 @@ const App = () => {
   const [formAddFriendVisible, setFormAddFriendVisible] = useState(false);
 
   const handleAddFriendClick = () => {
-    setFormAddFriendVisible((visible) => !visible);
+    setFormAddFriendVisible((visibility) => !visibility);
   };
 
   const handleAddFriend = (newFriend) => {
