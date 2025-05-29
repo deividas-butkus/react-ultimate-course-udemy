@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
+import { useLoaderData, useFetcher } from "react-router-dom";
 import OrderItem from "../order/OrderItem";
 
 // Test ID: IIDSAT
@@ -11,6 +12,17 @@ import {
 
 function Order() {
   const order = useLoaderData();
+
+  const fetcher = useFetcher();
+
+  useEffect(
+    function () {
+      if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+    },
+    [fetcher],
+  );
+
+  console.log(fetcher.data);
 
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
@@ -57,6 +69,11 @@ function Order() {
           <OrderItem
             item={item}
             key={item.id ? `${item.id}-${index}` : index}
+            isLoadingIngredients={fetcher.state === "loading"}
+            ingredients={
+              fetcher?.data?.find((el) => el.id === item.pizzaId).ingredients ??
+              []
+            }
           />
         ))}
       </ul>
