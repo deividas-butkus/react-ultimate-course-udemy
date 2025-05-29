@@ -7,6 +7,7 @@ import CreateOrder from "./features/order/CreateOrder";
 import { action as createOrderAction } from "./features/order/createOrderAction";
 import Order from "./features/order/Order";
 import { loader as orderLoadar } from "./features/order/orderLoader";
+import { action as updateOrderAction } from "./features/order/UdateOrder";
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
 
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
           loader: orderLoadar,
           element: <Order />,
           errorElement: <Error />,
+          action: updateOrderAction,
         },
       ],
     },
@@ -49,7 +51,7 @@ const router = createBrowserRouter(
       v7_startTransition: true,
       v7_relativeSplatPath: true,
     },
-  }
+  },
 );
 
 function App() {
