@@ -33,7 +33,7 @@ function CreateOrder() {
         Ready to order? Let&apos;s go!
       </h2>
 
-      <button onClick={() => dispatch(fetchAddress)}>Get position</button>
+      <button onClick={() => dispatch(fetchAddress())}>Get position</button>
 
       {/* <Form method="POST" action="/order/new"> */}
       <Form method="POST">
