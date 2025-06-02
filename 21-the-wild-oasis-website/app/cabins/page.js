@@ -1,3 +1,5 @@
+import Counter from "../components/Counter";
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 export default async function Page() {
@@ -24,6 +26,7 @@ export default async function Page() {
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>
+      <Counter />
     </div>
   );
 }
