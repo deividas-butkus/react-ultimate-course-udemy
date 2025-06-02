@@ -1,11 +1,20 @@
+import Logo from "./components/Logo";
 import Navigation from "./components/Navigation";
+
+export const metadata = {
+  title: " The wild Oasis",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navigation />
+        <header>
+          <Logo />
+          <Navigation />
+        </header>
         <main>{children}</main>
+        <footet>Copyright by The Wild Oasis</footet>
       </body>
     </html>
   );
