@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+
 import { getCabins } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "../../features/cabins/CabinRow";
@@ -36,6 +38,8 @@ function CabinTable() {
   } = useQuery({
     queryKey: ["cabins"],
     queryFn: getCabins,
+
+    onError: (err) => toast.error(err.message),
   });
 
   if (isLoading) return <Spinner />;
