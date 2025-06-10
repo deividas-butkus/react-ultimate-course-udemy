@@ -10,7 +10,7 @@ import Textarea from "../../ui/Textarea";
 import { createCabin } from "../../services/apiCabins";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm() {
+function CreateCabinForm({ setShowForm }) {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
 
   const { errors } = formState;
@@ -23,6 +23,7 @@ function CreateCabinForm() {
       toast.success("New cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
       reset();
+      setShowForm(false);
     },
     onError: (err) => toast.error(err.message),
   });
