@@ -1,13 +1,9 @@
-import { useState } from "react";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import CabinTable from "../features/cabins/CabinTable";
-import Button from "../ui/Button";
-import CreateEditCabinForm from "../features/cabins/CreateEditCabinForm";
+import AddCabin from "../features/cabins/AddCabin";
 
 function Cabins() {
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <>
       <Row type="horizontal">
@@ -15,14 +11,10 @@ function Cabins() {
         <p>TEST</p>
       </Row>
 
-      <Row>
+      <Row type="vertical">
         <CabinTable />
+        <AddCabin />
       </Row>
-
-      <Button onClick={() => setShowForm((show) => !show)}>
-        Add new cabin
-      </Button>
-      {showForm && <CreateEditCabinForm setShowForm={setShowForm} />}
     </>
   );
 }
