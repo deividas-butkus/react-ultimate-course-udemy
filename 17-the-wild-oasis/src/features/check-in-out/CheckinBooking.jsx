@@ -1,4 +1,5 @@
-// import styled from "styled-components";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 import BookingDataBox from "../../features/bookings/BookingDataBox";
 
 import Row from "../../ui/Row";
@@ -10,30 +11,40 @@ import Spinner from "../../ui/Spinner";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/useBooking";
+import Checkbox from "../../ui/Checkbox";
+import { formatCurrency } from "../../utils/helpers";
+import { useCheckin } from "./useCheckin";
 
-// const Box = styled.div`
-//   /* Box */
-//   background-color: var(--color-grey-0);
-//   border: 1px solid var(--color-grey-100);
-//   border-radius: var(--border-radius-md);
-//   padding: 2.4rem 4rem;
-// `;
+const Box = styled.div`
+  /* Box */
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+  padding: 2.4rem 4rem;
+`;
 
 function CheckinBooking() {
-  const moveBack = useMoveBack();
-
+  const [confirmPaid, setConfirmPaid] = useState(false);
   const { booking, isLoading } = useBooking();
+  const { checkin, isCheckingIn } = useCheckin();
+
+  useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
+
+  const moveBack = useMoveBack();
 
   const {
     id: bookingId,
-    // guests,
-    // totalPrice,
+    guests,
+    totalPrice,
     // numGuests,
     // hasBreakfast,
     // numNights,
   } = booking || {};
 
-  function handleCheckin() {}
+  function handleCheckin() {
+    if (!confirmPaid) return;
+    checkin(bookingId);
+  }
 
   if (isLoading) return <Spinner />;
 
@@ -46,8 +57,23 @@ function CheckinBooking() {
 
       <BookingDataBox booking={booking} />
 
+      <Box>
+        <Checkbox
+          checked={confirmPaid}
+          onChange={() => setConfirmPaid((confirmed) => !confirmed)}
+          id="confirm"
+          disabled={confirmPaid || isCheckingIn}
+        >
+          I confirm that {guests.fullName} has paid the total amount of{" "}
+          {formatCurrency(totalPrice)}
+        </Checkbox>
+      </Box>
+
       <ButtonGroup>
-        <Button onClick={handleCheckin}>Check in booking #{bookingId}</Button>
+        <Button onClick={handleCheckin} disabled={!confirmPaid || isCheckingIn}>
+          Check in booking #{bookingId}
+        </Button>
+
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
