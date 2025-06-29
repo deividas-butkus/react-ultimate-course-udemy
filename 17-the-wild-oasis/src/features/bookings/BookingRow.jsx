@@ -4,7 +4,7 @@ import { format, isToday } from "date-fns";
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
-import { HiEye } from "react-icons/hi";
+import { HiEye, HiArrowDownOnSquare } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 
 import { formatCurrency } from "../../utils/helpers";
@@ -94,6 +94,12 @@ function BookingRow({
             onClick={() => navigate(`/bookings/${bookingId}`)}
           >
             See details
+          </Menus.Button>
+          <Menus.Button
+            icon={<HiArrowDownOnSquare />}
+            onClick={() => navigate(`/checkin/${bookingId}`)}
+          >
+            Check in
           </Menus.Button>
         </Menus.List>
       </Menus.Menu>
