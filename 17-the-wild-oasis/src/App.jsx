@@ -16,7 +16,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./features/authentication/ProtectedRoute";
-import { DarkModeProvider } from "./context/DarkModeContext";
+import { DarkModeProvider } from "./context/DarkModeProvider";
 
 const queryClient = new QueryClient({
   defaultOptions: {
