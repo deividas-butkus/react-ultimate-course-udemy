@@ -91,7 +91,9 @@ function SalesChart({ bookings, numDays }) {
 
   return (
     <StyledSalesChart>
-      <Heading as="h2">Sales</Heading>
+      <Heading as="h2">
+        Sales {data[0]?.label} &ndash; {data[data.length - 1]?.label}
+      </Heading>
       <ResponsiveContainer height={300} width="100%">
         <AreaChart data={data} height={300} width={700}>
           <YAxis
