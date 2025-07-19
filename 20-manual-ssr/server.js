@@ -1,6 +1,8 @@
 const { createServer } = require("http");
 const { readFileSync } = require("fs");
 const { parse } = require("url");
+const React = require("react");
+const { renderToString } = require("react-dom/server");
 
 const pizzas = [
   {
@@ -63,15 +65,20 @@ function MenuItem({ pizza }) {
 }
 
 const htmlTemplate = readFileSync(`${__dirname}/index.html`, "utf-8");
+const clientJs = readFileSync(`${__dirname}/client.js`, "utf-8");
 
 const server = createServer((req, res) => {
   const pathName = parse(req.url, true).pathname;
 
   if (pathName === "/") {
+    const renderedReact = renderToString(<Home />);
+    const html = htmlTemplate.replace("%%%CONTENT%%%", renderedReact);
+
     res.writeHead(200, { "Content-type": "text/html" });
-    res.end("Hello world");
-  } else if (pathName === "/test") {
-    res.end("TEST");
+    res.end(html);
+  } else if (pathName === "/client.js") {
+    res.writeHead(200, { "Content-type": "application/javascript" });
+    res.end(clientJs);
   } else {
     res.end("The URL cannot be found");
   }
