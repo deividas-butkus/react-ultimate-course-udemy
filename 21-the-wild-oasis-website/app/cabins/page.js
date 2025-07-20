@@ -1,4 +1,4 @@
-import Counter from "../components/Counter";
+import Counter from "../_components/Counter";
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
