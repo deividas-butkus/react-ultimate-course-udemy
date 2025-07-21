@@ -10,10 +10,7 @@ const josefin = Josefin_Sans({
   display: "swap",
 });
 
-console.log(josefin);
-
 export const metadata = {
-  // title: " The wild Oasis",
   title: {
     template: "%s | The Wild Oasis",
     default: "Welcome | The Wild Oasis",
@@ -26,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} antialiased bg-primary-950 text-primary-200 min-h-screen flex flex-col`}
+        className={`${josefin.className} antialiased bg-primary-950 text-primary-200 min-h-screen flex flex-col relative`}
       >
         <Header />
         <div className="flex-1 blue-500 px-8 py-12">
