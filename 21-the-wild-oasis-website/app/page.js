@@ -10,6 +10,7 @@ export default function Page() {
         fill
         alt="Mountains and forests with two cabins"
         className="object-cover object-top"
+        placeholder="blur"
       />
 
       <div className="relative z-10 text-center">
