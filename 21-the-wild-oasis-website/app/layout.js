@@ -3,7 +3,11 @@ import Navigation from "@/_components/Navigation";
 import "@/_styles/globals.css";
 
 export const metadata = {
-  title: " The wild Oasis",
+  // title: " The wild Oasis",
+  title: {
+    template: "%s | The Wild Oasis",
+    default: "Welcome | The Wild Oasis",
+  },
 };
 
 export default function RootLayout({ children }) {
