@@ -9,7 +9,7 @@ export default function Page() {
         src={bg}
         fill
         alt="Mountains and forests with two cabins"
-        className="object-cover"
+        className="object-cover object-top"
       />
 
       <div className="relative z-10 text-center">
