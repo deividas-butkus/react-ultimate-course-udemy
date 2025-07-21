@@ -1,3 +1,4 @@
+import Header from "@/_components/Header";
 import Logo from "@/_components/Logo";
 import Navigation from "@/_components/Navigation";
 import "@/_styles/globals.css";
@@ -27,10 +28,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${josefin.className} bg-primary-950 text-primary-200 min-h-screen`}
       >
-        <header>
-          <Logo />
-          <Navigation />
-        </header>
+        <Header />
         <main>{children}</main>
         <footer>Copyright by The Wild Oasis</footer>
       </body>
