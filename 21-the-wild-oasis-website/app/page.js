@@ -11,6 +11,7 @@ export default function Page() {
         alt="Mountains and forests with two cabins"
         className="object-cover object-top"
         placeholder="blur"
+        quality={80}
       />
 
       <div className="relative z-10 text-center">
