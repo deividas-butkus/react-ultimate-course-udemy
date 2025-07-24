@@ -8,6 +8,8 @@ export const metadata = {
 
 export const experimental_ppr = true;
 
+const buildTime = new Date().toLocaleTimeString();
+
 export default function Page() {
   return (
     <div>
@@ -21,6 +23,9 @@ export default function Page() {
         hot tub under the stars. Enjoy nature's beauty in your own little home
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
+      </p>
+      <p className="text-accent-300 text-sm mb-5">
+        Static content built at: {buildTime}
       </p>
 
       <Suspense fallback={<Spinner />}>
