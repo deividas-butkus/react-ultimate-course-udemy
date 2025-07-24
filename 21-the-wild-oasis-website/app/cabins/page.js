@@ -6,6 +6,8 @@ export const metadata = {
   title: "Cabins",
 };
 
+export const experimental_ppr = true;
+
 export default function Page() {
   return (
     <div>
