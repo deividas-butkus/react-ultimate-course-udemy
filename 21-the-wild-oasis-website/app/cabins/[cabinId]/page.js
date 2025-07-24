@@ -8,12 +8,12 @@ export async function generateMetadata({ params }) {
   return { title: `Cabin ${name}` };
 }
 
-export async function generateStaticParams() {
-  const cabins = await getCabins();
-  const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
+// export async function generateStaticParams() {
+//   const cabins = await getCabins();
+//   const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
 
-  return ids;
-}
+//   return ids;
+// }
 
 export default async function Page({ params }) {
   const cabin = await getCabin(params.cabinId);
