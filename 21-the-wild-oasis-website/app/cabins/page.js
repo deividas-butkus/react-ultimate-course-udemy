@@ -11,7 +11,9 @@ export const metadata = {
 const buildTime = new Date().toLocaleTimeString();
 
 export default function Page({ searchParams }) {
-  console.log(searchParams);
+  const filter = searchParams?.capacity ?? "all";
+
+  console.log(filter);
 
   return (
     <div>
