@@ -1,4 +1,5 @@
 import CabinList from "@/_components/CabinList";
+import Filter from "@/_components/Filter";
 import Spinner from "@/_components/Spinner";
 import { Suspense } from "react";
 
@@ -33,6 +34,10 @@ export default function Page({ searchParams }) {
       {/* <p className="text-accent-300 text-sm mb-5">
         Static content built at: {buildTime}
       </p> */}
+
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
 
       <Suspense fallback={<Spinner />}>
         <CabinList filter={filter} />
