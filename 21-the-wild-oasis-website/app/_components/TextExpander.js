@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "@/_components/Logo";
 import { useState } from "react";
 
 function TextExpander({ children }) {
@@ -17,6 +18,7 @@ function TextExpander({ children }) {
       >
         {isExpanded ? "Show less" : "Show more"}
       </button>
+      <Logo />
     </span>
   );
 }
