@@ -2,6 +2,8 @@ import CabinList from "@/_components/CabinList";
 import Spinner from "@/_components/Spinner";
 import { Suspense } from "react";
 
+export const revalidate = 3600;
+
 export const metadata = {
   title: "Cabins",
 };
@@ -22,9 +24,9 @@ export default function Page() {
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
       </p>
-      <p className="text-accent-300 text-sm mb-5">
+      {/* <p className="text-accent-300 text-sm mb-5">
         Static content built at: {buildTime}
-      </p>
+      </p> */}
 
       <Suspense fallback={<Spinner />}>
         <CabinList />
