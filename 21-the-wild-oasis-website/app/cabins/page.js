@@ -2,7 +2,9 @@ import CabinList from "@/_components/CabinList";
 import Spinner from "@/_components/Spinner";
 import { Suspense } from "react";
 
-export const revalidate = 3600;
+//Commented out after searchParams implementation as become redundant.
+// If in the future PPR would be implemented, revalidate ight be considered with the static part.
+// export const revalidate = 3600;
 
 export const metadata = {
   title: "Cabins",
