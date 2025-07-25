@@ -10,7 +10,9 @@ export const metadata = {
 
 const buildTime = new Date().toLocaleTimeString();
 
-export default function Page() {
+export default function Page({ searchParams }) {
+  console.log(searchParams);
+
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
