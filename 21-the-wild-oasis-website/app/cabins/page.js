@@ -24,9 +24,9 @@ export default function Page() {
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
       </p>
-      <p className="text-accent-300 text-sm mb-5">
+      {/* <p className="text-accent-300 text-sm mb-5">
         Static content built at: {buildTime}
-      </p>
+      </p> */}
 
       <Suspense fallback={<Spinner />}>
         <CabinList />
