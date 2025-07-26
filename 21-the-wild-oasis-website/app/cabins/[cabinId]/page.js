@@ -1,3 +1,5 @@
+import DateSelector from "@/_components/DateSelector";
+import ReservationForm from "@/_components/ReservationForm";
 import TextExpander from "@/_components/TextExpander";
 import { getCabin, getCabins } from "@/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
@@ -72,6 +74,10 @@ export default async function Page({ params }) {
         <h2 className="text-5xl font-semibold text-center">
           Reserve {name} today. Pay on arrival.
         </h2>
+        <div>
+          <DateSelector />
+          <ReservationForm />
+        </div>
       </div>
     </div>
   );
