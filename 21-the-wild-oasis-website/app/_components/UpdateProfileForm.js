@@ -1,6 +1,9 @@
 import SelectCountry from "@/_components/SelectCountry";
+import { useState } from "react";
 
 function UpdateProfileForm() {
+  const [count, setCount] = useState();
+
   // CHANGE
   const countryFlag = "pt.jpg";
   const nationality = "portugal";
