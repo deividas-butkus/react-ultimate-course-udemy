@@ -1,3 +1,5 @@
+import SelectCountry from "@/_components/SelectCountry";
+
 function UpdateProfileForm() {
   return (
     <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
@@ -27,7 +29,7 @@ function UpdateProfileForm() {
           />
         </div>
 
-        <SelectCountr
+        <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
