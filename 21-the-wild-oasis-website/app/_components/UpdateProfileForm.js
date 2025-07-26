@@ -1,3 +1,5 @@
+"use client";
+
 import SelectCountry from "@/_components/SelectCountry";
 import { useState } from "react";
 
