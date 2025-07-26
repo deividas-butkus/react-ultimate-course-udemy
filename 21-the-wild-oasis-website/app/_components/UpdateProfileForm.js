@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-function UpdateProfileForm() {
+function UpdateProfileForm({ children }) {
   const [count, setCount] = useState();
 
   // CHANGE
@@ -36,6 +36,8 @@ function UpdateProfileForm() {
             className="h-5 rounded-sm"
           />
         </div>
+
+        {children}
       </div>
 
       <div className="space-y-2">
