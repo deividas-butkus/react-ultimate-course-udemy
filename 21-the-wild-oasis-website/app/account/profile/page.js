@@ -1,3 +1,5 @@
+import UpdateProfileForm from "@/_components/UpdateProfileForm";
+
 export const metadata = {
   title: "Update profile",
 };
@@ -13,6 +15,8 @@ export default function Page() {
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
+
+      <UpdateProfileForm />
     </div>
   );
 }
