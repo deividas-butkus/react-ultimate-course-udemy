@@ -1,6 +1,7 @@
 import Header from "@/_components/Header";
 import Logo from "@/_components/Logo";
 import Navigation from "@/_components/Navigation";
+import { ReservationProvider } from "@/_context/reservationContext";
 import "@/_styles/globals.css";
 
 import { Josefin_Sans } from "next/font/google";
@@ -27,7 +28,9 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <div className="flex-1 blue-500 px-8 py-12 grid">
-          <main className="max-w-7xl mx-auto w-full">{children}</main>
+          <main className="max-w-7xl mx-auto w-full">
+            <ReservationProvider>{children}</ReservationProvider>
+          </main>
         </div>
       </body>
     </html>
