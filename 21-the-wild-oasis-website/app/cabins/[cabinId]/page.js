@@ -1,7 +1,12 @@
 import DateSelector from "@/_components/DateSelector";
 import ReservationForm from "@/_components/ReservationForm";
 import TextExpander from "@/_components/TextExpander";
-import { getCabin, getCabins } from "@/_lib/data-service";
+import {
+  getBookedDatesByCabinId,
+  getCabin,
+  getCabins,
+  getSettings,
+} from "@/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
@@ -20,6 +25,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const cabin = await getCabin(params.cabinId);
+  const settings = await getSettings();
 
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
