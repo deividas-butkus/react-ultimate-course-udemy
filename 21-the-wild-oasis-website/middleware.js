@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+// import { NextResponse } from "next/server";
 
-export function middleware(request) {
-  console.log(request);
+// export function middleware(request) {
+//   console.log(request);
 
-  return NextResponse.redirect(new URL("/about", request.url));
-}
+//   return NextResponse.redirect(new URL("/about", request.url));
+// }
 
-export const config = {
-  matcher: ["/account", "/cabins"],
-};
+// export const config = {
+//   matcher: ["/account", "/cabins"],
+// };
