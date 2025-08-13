@@ -41,8 +41,6 @@ export async function createBooking(bookingData, formData) {
 
   if (!session) throw new Error("You must be logged in");
 
-  console.log("Received bookingData:", bookingData);
-
   const newBooking = {
     ...bookingData,
     guestId: session.user.guestId,
@@ -54,8 +52,6 @@ export async function createBooking(bookingData, formData) {
     hasBreakfast: false,
     status: "unconfirmed",
   };
-
-  console.log("Final newBooking:", newBooking);
 
   const { error } = await supabase.from("bookings").insert([newBooking]);
 

@@ -12,8 +12,6 @@ function ReservationForm({ cabin, user }) {
   const startDate = range?.from;
   const endDate = range?.to;
 
-  console.log("Selected dates in ReservationForm:", { startDate, endDate });
-
   const numNights = startDate && endDate ? differenceInDays(endDate, startDate) : 0;
   const cabinPrice = numNights * (regularPrice - discount);
 
@@ -33,8 +31,6 @@ function ReservationForm({ cabin, user }) {
     cabinPrice,
     cabinId: id,
   };
-
-  console.log("Booking data being sent:", bookingData);
 
   const createBookingWithData = createBooking.bind(null, bookingData);
 
