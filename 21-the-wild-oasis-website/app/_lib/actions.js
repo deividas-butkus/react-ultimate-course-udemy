@@ -36,7 +36,7 @@ export async function signOutAction() {
   await signOut({ redirectTo: "/" });
 }
 
-export async function deleteReservation(bookingId) {
+export async function deleteBooking(bookingId) {
   const session = await auth();
 
   if (!session) throw new Error("You must be logged in");
