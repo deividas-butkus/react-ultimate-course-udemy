@@ -37,7 +37,10 @@ export async function signOutAction() {
 }
 
 export async function deleteReservation(bookingId) {
+  await new Promise((res) => setTimeout(res, 2000));
+
   const session = await auth();
+  throw new Error("Failed optimistic");
 
   if (!session) throw new Error("You must be logged in");
 
