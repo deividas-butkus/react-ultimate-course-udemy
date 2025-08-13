@@ -1,3 +1,5 @@
+"use client";
+
 import ReservationCard from "@/_components/ReservationCard";
 
 function ReservationList({ bookings }) {
