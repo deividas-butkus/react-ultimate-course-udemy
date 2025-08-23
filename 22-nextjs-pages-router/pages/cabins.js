@@ -3,7 +3,7 @@ import { getCabins } from "@/lib/data-service";
 
 export async function getStaticProps() {
   const cabins = await getCabins();
-  return { props: { cabins } };
+  return { props: { cabins }, revalidate: 3000 };
 }
 
 function Cabins({ cabins }) {
